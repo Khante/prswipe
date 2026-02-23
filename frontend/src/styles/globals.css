@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0d0810;
+  --bg-secondary: #150d18;
+  --bg-card: #1e1028;
+  --border-subtle: #3d1f35;
+  --accent-merge: #00e676;
+  --accent-close: #ff1744;
+  --accent-gold: #ffd700;
+  --text-primary: #f0f0f8;
+  --text-secondary: #cc88aa;
+  --glow-merge: 0 0 30px rgba(0, 230, 118, 0.3);
+  --glow-close: 0 0 30px rgba(255, 23, 68, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Mono", monospace;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      ellipse at 20% 50%,
+      rgba(255, 20, 150, 0.45) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(255, 80, 200, 0.4) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 60% 80%,
+      rgba(220, 10, 180, 0.35) 0%,
+      transparent 50%
+    ),
+    #0d0810;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.aurora-blob-1 {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 20, 180, 0.8);
+  filter: blur(80px);
+  opacity: 0.65;
+  top: 10%;
+  left: 15%;
+  z-index: -3;
+  animation: drift1 9s ease-in-out infinite;
+}
+
+.aurora-blob-2 {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(255, 60, 220, 0.7);
+  filter: blur(80px);
+  opacity: 0.6;
+  top: 50%;
+  right: 10%;
+  z-index: -3;
+  animation: drift2 11s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.aurora-blob-3 {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 0, 160, 0.75);
+  filter: blur(80px);
+  opacity: 0.6;
+  bottom: 15%;
+  left: 40%;
+  z-index: -3;
+  animation: drift3 8s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+  75% {
+    transform: translate(-30px, -10px) scale(1.1);
+  }
+}
+
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-25px, 20px) scale(0.95);
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.05);
+  }
+  75% {
+    transform: translate(35px, 15px) scale(0.9);
+  }
+}
+
+@keyframes drift3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, 30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-35px, -25px) scale(0.95);
+  }
+  75% {
+    transform: translate(-15px, 35px) scale(1.05);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Syne", sans-serif;
+}
+
+.font-display {
+  font-family: "Syne", sans-serif;
+}
+
+.font-body {
+  font-family: "DM Mono", monospace;
+}
+
+.font-mono {
+  font-family: "Space Mono", monospace;
+}
+
+.glass-card {
+  background: rgba(40, 15, 35, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 100, 180, 0.1);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 80, 160, 0.08);
+}
+
+.btn-primary {
+  @apply px-6 py-3 rounded-lg font-display font-semibold transition-all duration-300;
+}
+
+.btn-merge {
+  @apply bg-accent-merge/20 text-accent-merge border border-accent-merge/30;
+}
+
+.btn-merge:hover {
+  @apply bg-accent-merge/30 shadow-glow-merge;
+}
+
+.btn-close {
+  @apply bg-accent-close/20 text-accent-close border border-accent-close/30;
+}
+
+.btn-close:hover {
+  @apply bg-accent-close/30 shadow-glow-close;
+}
+
+.btn-github {
+  @apply bg-[#24292e] text-white border border-[#444c56] hover:bg-[#2f363d];
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

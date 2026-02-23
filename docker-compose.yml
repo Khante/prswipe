@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pr_swipe_backend
+    env_file: .env
+    ports:
+      - "8000:8000"
+    networks:
+      - pr_swipe_network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    container_name: pr_swipe_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - pr_swipe_network
+    restart: unless-stopped
+
+networks:
+  pr_swipe_network:
+    driver: bridge
