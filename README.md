@@ -1,6 +1,6 @@
 # PRswipe
 
-Swipe through GitHub PRs like Tinder. Review and merge pull requests with a simple swipe interface.
+Swipe through GitHub PRs like Tinder. Review and merge pull requests with a simple swipe interface. ( This is obviously a light-hearted project. Don't use this in production. Or do. 😊)
 
 ![PRswipe Screenshot](./docs/swipe-demo.png)
 
@@ -33,45 +33,14 @@ cd prswipe
    - **Homepage URL**: `http://localhost:3000`
    - **Authorization callback URL**: `http://localhost:3000/auth/callback`
 3. Generate a new **Client Secret**
-4. Copy the `.env.template` to `.env` and fill in your credentials:
-
-```bash
-cp .env.template .env
-```
-
-Edit `.env`:
-```
-GITHUB_CLIENT_ID=your_client_id
-GITHUB_CLIENT_SECRET=your_client_secret
-SECRET_KEY=your_secret_key
-```
-
-To generate a secret key:
-```bash
-python -c "import secrets; print(secrets.token_hex(32))"
-```
+4. Rename the `.env.template` to `.env` and fill in your credentials
+5. Create a token secret key using the instructions give in `.env` file. 
 
 ### 3. Start the application
 
 Using Docker (recommended):
 ```bash
 docker-compose up --build
-```
-
-Or run locally:
-
-**Backend:**
-```bash
-cd backend
-pip install -e .
-prswipe
-```
-
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm run dev
 ```
 
 ## Usage
@@ -82,8 +51,7 @@ npm run dev
 4. Swipe through PRs:
    - **Swipe Right** → Merge the PR
    - **Swipe Left** → Close the PR
-   - **Press `o`** → Open PR in GitHub
-   - **Press `u`** → Undo last action (only for closed PRs)
+5. Look at ads while swiping through PRs. 
 
 ![Swipe Interface](./docs/swipe-ui.png)
 
@@ -98,3 +66,7 @@ npm run dev
 - **Frontend**: React + TypeScript + Vite + Tailwind
 - **Database**: None (stateless)
 - **Auth**: GitHub OAuth
+
+## PS 
+
+
